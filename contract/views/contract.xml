@@ -549,6 +549,7 @@
                 />
                 <field name="journal_id" />
                 <field name="pricelist_id" />
+                <field name="partner_id"/>
                 <separator />
                 <separator />
                 <filter

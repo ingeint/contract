@@ -1689,7 +1689,7 @@ msgstr ""
 #. module: contract
 #: model_terms:ir.ui.view,arch_db:contract.contract_contract_form_view
 msgid "Recurring Type"
-msgstr ""
+msgstr "Tipo de Recurrencia"
 
 #. module: contract
 #: code:addons/contract/controllers/main.py:0
@@ -1697,13 +1697,13 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:contract.portal_my_contracts
 #, python-format
 msgid "Reference"
-msgstr ""
+msgstr "Referencia"
 
 #. module: contract
 #: model_terms:ir.ui.view,arch_db:contract.contract_contract_form_view
 #: model_terms:ir.ui.view,arch_db:contract.contract_line_tree_view
 msgid "Renew"
-msgstr ""
+msgstr "Renovar"
 
 #. module: contract
 #: model:ir.actions.server,name:contract.contract_line_cron_for_renew_ir_actions_server
@@ -1717,21 +1717,21 @@ msgstr ""
 #: model:ir.model.fields,field_description:contract.field_contract_line__auto_renew_interval
 #: model:ir.model.fields,field_description:contract.field_contract_template_line__auto_renew_interval
 msgid "Renew Every"
-msgstr ""
+msgstr "Renovar cada"
 
 #. module: contract
 #: model:ir.model.fields,help:contract.field_contract_abstract_contract_line__auto_renew_interval
 #: model:ir.model.fields,help:contract.field_contract_line__auto_renew_interval
 #: model:ir.model.fields,help:contract.field_contract_template_line__auto_renew_interval
 msgid "Renew every (Days/Week/Month/Year)"
-msgstr ""
+msgstr "Renovar cada (Días/Semana/Mes/Año"
 
 #. module: contract
 #: model:ir.model.fields,field_description:contract.field_contract_abstract_contract_line__auto_renew_rule_type
 #: model:ir.model.fields,field_description:contract.field_contract_line__auto_renew_rule_type
 #: model:ir.model.fields,field_description:contract.field_contract_template_line__auto_renew_rule_type
 msgid "Renewal type"
-msgstr ""
+msgstr "Tipo Renovación"
 
 #. module: contract
 #: model:ir.model.fields,field_description:contract.field_contract_contract_terminate__terminate_comment_required
@@ -1742,12 +1742,12 @@ msgstr ""
 #. module: contract
 #: model:ir.model.fields,field_description:contract.field_contract_contract__user_id
 msgid "Responsible"
-msgstr ""
+msgstr "Responsable"
 
 #. module: contract
 #: model:ir.model.fields,field_description:contract.field_contract_contract__activity_user_id
 msgid "Responsible User"
-msgstr ""
+msgstr "Usuario Responsable"
 
 #. module: contract
 #: model:ir.model.fields,field_description:contract.field_contract_contract__message_has_sms_error
@@ -1759,7 +1759,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:contract.field_res_users__sale_contract_count
 #: model_terms:ir.ui.view,arch_db:contract.view_partner_form
 msgid "Sale Contracts"
-msgstr ""
+msgstr "Contrato de Ventas"
 
 #. module: contract
 #: model:ir.model.fields.selection,name:contract.selection__contract_abstract_contract_line__display_type__line_section
