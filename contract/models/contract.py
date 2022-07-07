@@ -433,12 +433,13 @@ class ContractContract(models.Model):
             {
                 "ref": self.code,
                 "company_id": self.company_id.id,
-                "currency_id": self.currency_id.id,
+                "currency_id": self.pricelist_id.currency_id.id,
                 "invoice_date": date_invoice,
                 "journal_id": journal.id,
                 "invoice_origin": self.name,
                 "invoice_user_id": self.user_id.id,
-                "contract_id": self.id
+                "contract_id": self.id,
+                "state": 'auto'
             }
         )
         return invoice_vals, move_form
@@ -528,6 +529,8 @@ class ContractContract(models.Model):
         """
         invoices_values = []
         for contract in self:
+            if contract.state != 'ac':
+                continue
             if not date_ref:
                 date_ref = contract.recurring_next_date
             if not date_ref:
