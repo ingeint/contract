@@ -223,9 +223,9 @@ class ContractContract(models.Model):
             .search(
                 [
                     (
-                        "contract_line_id",
-                        "in",
-                        self.contract_line_ids.ids,
+                        "contract_id",
+                        "=",
+                        self.id,
                     )
                 ]
             )
