@@ -498,6 +498,7 @@ class ContractLine(models.Model):
     #                 % rec.name
     #             )
 
+   '''
     @api.constrains("recurring_next_date")
     def _check_recurring_next_date_recurring_invoices(self):
         for rec in self:
@@ -512,7 +513,7 @@ class ContractLine(models.Model):
                         "line '%s'"
                     )
                     % rec.name
-                )
+                )'''
 
     @api.constrains("date_start", "date_end")
     def _check_start_end_dates(self):
