@@ -498,22 +498,21 @@ class ContractLine(models.Model):
     #                 % rec.name
     #             )
 
-   '''
-    @api.constrains("recurring_next_date")
-    def _check_recurring_next_date_recurring_invoices(self):
-        for rec in self:
-            if not rec.recurring_next_date and (
-                not rec.date_end
-                or not rec.last_date_invoiced
-                or rec.last_date_invoiced < rec.date_end
-            ):
-                raise ValidationError(
-                    _(
-                        "You must supply a date of next invoice for contract "
-                        "line '%s'"
-                    )
-                    % rec.name
-                )'''
+   #@api.constrains("recurring_next_date")
+    #def _check_recurring_next_date_recurring_invoices(self):
+            #    for rec in self:
+            #if not rec.recurring_next_date and (
+                #   not rec.date_end
+                #or not rec.last_date_invoiced
+                #or rec.last_date_invoiced < rec.date_end
+            #):
+                #   raise ValidationError(
+                #   _(
+                #       "You must supply a date of next invoice for contract "
+                #       "line '%s'"
+                #   )
+                #   % rec.name
+                #)'''
 
     @api.constrains("date_start", "date_end")
     def _check_start_end_dates(self):
