@@ -321,8 +321,6 @@ class ContractContract(models.Model):
                 or not recurring_next_date
             ):
                 super(ContractContract, contract)._compute_recurring_next_date()
-            else:
-                contract.recurring_next_date = min(recurring_next_date)
 
     @api.depends("contract_line_ids.create_invoice_visibility")
     def _compute_create_invoice_visibility(self):
