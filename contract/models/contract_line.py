@@ -530,7 +530,7 @@ class ContractLine(models.Model):
                 and rec.date_start
                 and today >= rec.date_start
             ):
-                rec.create_invoice_visibility = bool(rec.recurring_next_date)
+                rec.create_invoice_visibility
             else:
                 rec.create_invoice_visibility = False
 
