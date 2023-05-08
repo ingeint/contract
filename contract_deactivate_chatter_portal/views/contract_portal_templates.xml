@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2020 Tecnativa - Víctor Martínez
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <template id="portal_contract_page_inherit" name="My Contract"
+              inherit_id="contract.portal_contract_page">
+
+        <xpath expr="//div[@id='contract_communication']" position="replace">
+
+        </xpath>
+    </template>
+</odoo>
