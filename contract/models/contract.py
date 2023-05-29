@@ -293,26 +293,26 @@ class ContractContract(models.Model):
             action["views"] = [(tree_view.id, "tree"), (form_view.id, "form")]
         return action
 
-    @api.depends(
-        "contract_line_ids.recurring_next_date",
-        "contract_line_ids.is_canceled",
-    )
-    def _compute_recurring_next_date(self):
-        for contract in self:
-            recurring_next_date = contract.contract_line_ids.filtered(
-                lambda l: (
-                    l.recurring_next_date
-                    and not l.is_canceled
-                    and (not l.display_type or l.is_recurring_note)
-                )
-            ).mapped("recurring_next_date")
-            # we give priority to computation from date_start if modified
-            if (
-                contract._origin
-                and contract._origin.date_start != contract.date_start
-                or not recurring_next_date
-            ):
-                super(ContractContract, contract)._compute_recurring_next_date()
+    # @api.depends(
+    #     "contract_line_ids.recurring_next_date",
+    #     "contract_line_ids.is_canceled",
+    # )
+    # def _compute_recurring_next_date(self):
+    #     for contract in self:
+    #         recurring_next_date = contract.contract_line_ids.filtered(
+    #             lambda l: (
+    #                 l.recurring_next_date
+    #                 and not l.is_canceled
+    #                 and (not l.display_type or l.is_recurring_note)
+    #             )
+    #         ).mapped("recurring_next_date")
+    #         # we give priority to computation from date_start if modified
+    #         if (
+    #             contract._origin
+    #             and contract._origin.date_start != contract.date_start
+    #             or not recurring_next_date
+    #         ):
+    #             super(ContractContract, contract)._compute_recurring_next_date()
 
     @api.depends("contract_line_ids.create_invoice_visibility")
     def _compute_create_invoice_visibility(self):
@@ -581,7 +581,7 @@ class ContractContract(models.Model):
         invoices_values = self._prepare_recurring_invoices_values(date_ref)
         moves = self.env["account.move"].create(invoices_values)
         self._invoice_followers(moves)
-        self._compute_recurring_next_date()
+        # self._compute_recurring_next_date()
         return moves
 
     @api.model
