@@ -214,14 +214,12 @@
                                     <field
                                         name="analytic_tag_ids"
                                         widget="many2many_tags"
-                                        groups="analytic.group_analytic_tags"
                                     />
                                     <field name="quantity" />
                                     <field name="allowed_uom_categ_id" invisible="1" />
                                     <field name="uom_id" />
                                     <field
                                         name="automatic_price"
-                                        attrs="{'column_invisible': [('parent.contract_type', '=', 'purchase')]}"
                                     />
                                     <field
                                         name="price_unit"
@@ -292,72 +290,35 @@
                                 widget="section_and_note_one2many"
                                 context="{'default_contract_type': contract_type}"
                             >
-                                <tree
-                                    decoration-muted="is_canceled"
-                                    decoration-info="create_invoice_visibility and not is_canceled"
-                                >
+                                <tree decoration-muted="is_canceled" decoration-info="create_invoice_visibility and not is_canceled">
                                     <control>
                                         <create string="Add a line" />
-                                        <create
-                                            string="Add a section"
-                                            context="{'default_display_type': 'line_section'}"
-                                        />
-                                        <create
-                                            string="Add a note"
-                                            context="{'default_display_type': 'line_note'}"
-                                        />
+                                        <create string="Add a section" context="{'default_display_type': 'line_section'}"/>
+                                        <create string="Add a note" context="{'default_display_type': 'line_note'}"/>
                                     </control>
                                     <field name="display_type" invisible="1" />
                                     <field name="sequence" widget="handle" />
                                     <field name="product_id" />
                                     <field name="name" widget="section_and_note_text" />
-                                    <field
-                                        name="analytic_account_id"
-                                        groups="analytic.group_analytic_accounting"
-                                    />
-                                    <field
-                                        name="analytic_tag_ids"
-                                        widget="many2many_tags"
-                                        groups="analytic.group_analytic_tags"
-                                    />
+                                    <field name="analytic_account_id" groups="analytic.group_analytic_accounting"/>
+                                    <field name="analytic_tag_ids" widget="many2many_tags"/>
                                     <field name="quantity" />
                                     <field name="uom_id" />
-                                    <field
-                                        name="automatic_price"
-                                        attrs="{'column_invisible': [('parent.contract_type', '=', 'purchase')]}"
-                                    />
-                                    <field
-                                        name="price_unit"
-                                        attrs="{'readonly': [('automatic_price', '=', True)]}"
-                                    />
+                                    <field name="automatic_price"/>
+                                    <field name="price_unit" attrs="{'readonly': [('automatic_price', '=', True)]}"/>
                                     <field name="specific_price" invisible="1" />
                                     <field name="discount" groups="base.group_no_one" />
                                     <field name="price_subtotal" />
                                     <field name="recurring_interval" invisible="1" />
                                     <field name="recurring_rule_type" invisible="1" />
-                                    <field
-                                        name="recurring_invoicing_type"
-                                        invisible="1"
-                                    />
+                                    <field name="recurring_invoicing_type" invisible="1"/>
                                     <field name="date_start" required="1" />
                                     <field name="date_end" />
                                     <field name="recurring_next_date" required="1" />
-                                    <field
-                                        name="last_date_invoiced"
-                                        groups="base.group_no_one"
-                                    />
-                                    <field
-                                        name="create_invoice_visibility"
-                                        invisible="1"
-                                    />
-                                    <field
-                                        name="is_plan_successor_allowed"
-                                        invisible="1"
-                                    />
-                                    <field
-                                        name="is_stop_plan_successor_allowed"
-                                        invisible="1"
-                                    />
+                                    <field name="last_date_invoiced" groups="base.group_no_one"/>
+                                    <field name="create_invoice_visibility" invisible="1"/>
+                                    <field name="is_plan_successor_allowed" invisible="1"/>
+                                    <field name="is_stop_plan_successor_allowed" invisible="1"/>
                                     <field name="is_stop_allowed" invisible="1" />
                                     <field name="is_cancel_allowed" invisible="1" />
                                     <field name="is_un_cancel_allowed" invisible="1" />
@@ -368,45 +329,39 @@
                                         string="Plan Start"
                                         type="object"
                                         icon="fa-calendar text-success"
-                                        attrs="{'invisible': [('is_plan_successor_allowed', '=', False)]}"
-                                    />
+                                        attrs="{'invisible': [('is_plan_successor_allowed', '=', False)]}"/>
                                     <button
                                         name="action_stop_plan_successor"
                                         string="Stop Plan Successor"
                                         type="object"
                                         icon="fa-pause text-muted"
-                                        attrs="{'invisible': [('is_stop_plan_successor_allowed', '=', False)]}"
-                                    />
+                                        attrs="{'invisible': [('is_stop_plan_successor_allowed', '=', False)]}"/>
                                     <button
                                         name="action_stop"
                                         string="Stop"
                                         type="object"
                                         icon="fa-stop text-danger"
-                                        attrs="{'invisible': [('is_stop_allowed', '=', False)]}"
-                                    />
+                                        attrs="{'invisible': [('is_stop_allowed', '=', False)]}"/>
                                     <button
                                         name="cancel"
                                         string="Cancel"
                                         type="object"
                                         icon="fa-ban text-danger"
                                         confirm="Are you sure you want to cancel this line"
-                                        attrs="{'invisible': [('is_cancel_allowed', '=', False)]}"
-                                    />
+                                        attrs="{'invisible': [('is_cancel_allowed', '=', False)]}"/>
                                     <button
                                         name="action_uncancel"
                                         string="Un-cancel"
                                         type="object"
                                         icon="fa-ban text-success"
-                                        attrs="{'invisible': [('is_un_cancel_allowed', '=', False)]}"
-                                    />
+                                        attrs="{'invisible': [('is_un_cancel_allowed', '=', False)]}"/>
                                     <button
                                         name="renew"
                                         string="Renew"
                                         type="object"
                                         icon="fa-fast-forward text-success"
                                         groups="base.group_no_one"
-                                        attrs="{'invisible': [('is_auto_renew', '=', False)]}"
-                                    />
+                                        attrs="{'invisible': [('is_auto_renew', '=', False)]}"/>
                                 </tree>
                             </field>
                             <field name="note" />
@@ -473,9 +428,9 @@
                     </notebook>
                 </sheet>
                 <div class="oe_chatter">
-                    <field name="message_follower_ids" widget="mail_followers" />
-                    <field name="activity_ids" widget="mail_activity" />
-                    <field name="message_ids" widget="mail_thread" />
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
                 </div>
             </form>
         </field>
@@ -494,10 +449,10 @@
                     name="context"
                 >{'default_customer_rank': 1, 'default_supplier_rank': 0, 'res_partner_search_mode': 'customer', 'show_vat': True}</attribute>
             </field>
+            <field name="company_id" invisible="1"/>
             <field name="journal_id" position="attributes">
                 <attribute
-                    name="domain"
-                >[('type', '=', 'sale'),('company_id', '=', company_id)]</attribute>
+                    name="domain">[('type', '=', 'sale')]</attribute>
             </field>
         </field>
     </record>
@@ -511,14 +466,11 @@
         <field name="arch" type="xml">
             <field name="partner_id" position="attributes">
                 <attribute name="string">Supplier</attribute>
-                <attribute
-                    name="context"
-                >{'default_customer_rank': False, 'default_supplier_rank': 1, 'res_partner_search_mode': 'supplier', 'show_vat': True}</attribute>
+                <attribute name="context">{'default_customer_rank': False, 'default_supplier_rank': 1, 'res_partner_search_mode': 'supplier', 'show_vat': True}</attribute>
             </field>
+            <field name="company_id" invisible="1"/>
             <field name="journal_id" position="attributes">
-                <attribute
-                    name="domain"
-                >[('type', '=', 'purchase'),('company_id', '=', company_id)]</attribute>
+                <attribute name="domain">[('type', '=', 'purchase')]</attribute>
             </field>
         </field>
     </record>

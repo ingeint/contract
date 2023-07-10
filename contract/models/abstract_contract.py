@@ -31,7 +31,7 @@ class ContractAbstractContract(models.AbstractModel):
     journal_id = fields.Many2one(
         comodel_name="account.journal",
         string="Journal",
-        domain="[('type', '=', contract_type)," "('company_id', '=', company_id)]",
+        domain="[('type', '=', contract_type)]",
         compute="_compute_journal_id",
         store=True,
         readonly=False,
@@ -76,7 +76,7 @@ class ContractAbstractContract(models.AbstractModel):
         for contract in self:
             domain = [
                 ("type", "=", contract.contract_type),
-                ("company_id", "=", contract.company_id.id),
+                ("company_id", "=", contract.sudo().company_id.id),
             ]
             journal = AccountJournal.search(domain, limit=1)
             if journal:
