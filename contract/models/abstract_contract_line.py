@@ -254,5 +254,5 @@ class ContractAbstractContractLine(models.AbstractModel):
             uom=self.uom_id.id,
         )
         vals["name"] = self.product_id.get_product_multiline_description_sale()
-        vals["price_unit"] = product.price
+        vals["price_unit"] = product.lst_price
         self.update(vals)
