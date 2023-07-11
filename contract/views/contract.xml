@@ -211,10 +211,6 @@
                                         name="analytic_account_id"
                                         groups="analytic.group_analytic_accounting"
                                     />
-                                    <field
-                                        name="analytic_tag_ids"
-                                        widget="many2many_tags"
-                                    />
                                     <field name="quantity" />
                                     <field name="allowed_uom_categ_id" invisible="1" />
                                     <field name="uom_id" />
@@ -229,7 +225,6 @@
                                     <field name="discount" groups="base.group_no_one" />
                                     <field name="price_subtotal" />
                                     <field name="recurring_interval" invisible="1" />
-                                    <field name="recurring_rule_type" invisible="1" />
                                     <field
                                         name="recurring_invoicing_type"
                                         invisible="1"
@@ -301,7 +296,6 @@
                                     <field name="product_id" />
                                     <field name="name" widget="section_and_note_text" />
                                     <field name="analytic_account_id" groups="analytic.group_analytic_accounting"/>
-                                    <field name="analytic_tag_ids" widget="many2many_tags"/>
                                     <field name="quantity" />
                                     <field name="uom_id" />
                                     <field name="automatic_price"/>
@@ -310,7 +304,6 @@
                                     <field name="discount" groups="base.group_no_one" />
                                     <field name="price_subtotal" />
                                     <field name="recurring_interval" invisible="1" />
-                                    <field name="recurring_rule_type" invisible="1" />
                                     <field name="recurring_invoicing_type" invisible="1"/>
                                     <field name="date_start" required="1" />
                                     <field name="date_end" />
@@ -398,11 +391,6 @@
                                 <field
                                     name="currency_id"
                                     groups="base.group_multi_currency"
-                                />
-                                <field
-                                    name="invoice_partner_id"
-                                    attrs="{'readonly': [('is_terminated','=',True)]}"
-                                    required="1"
                                 />
                             </group>
                             <group

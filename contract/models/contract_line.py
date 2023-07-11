@@ -37,10 +37,7 @@ class ContractLine(models.Model):
         string="Analytic account",
         comodel_name="account.analytic.account",
     )
-    analytic_tag_ids = fields.Many2many(
-        comodel_name="account.analytic.tag",
-        string="Analytic Tags",
-    )
+
     date_start = fields.Date(required=True)
     date_end = fields.Date(compute="_compute_date_end", store=True, readonly=False)
     termination_notice_date = fields.Date(
