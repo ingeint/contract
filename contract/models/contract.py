@@ -376,7 +376,7 @@ class ContractContract(models.Model):
             # Remove template link field
             vals.pop("contract_template_id", False)
             vals["date_start"] = fields.Date.context_today(contract_line)
-            vals["recurring_next_date"] = fields.Date.context_today(contract_line)
+            #vals["recurring_next_date"] = fields.Date.context_today(contract_line)
             new_lines += contract_line_model.new(vals)
         new_lines._onchange_is_auto_renew()
         return new_lines
