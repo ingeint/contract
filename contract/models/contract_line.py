@@ -864,8 +864,8 @@ class ContractLine(models.Model):
         return contract_line
 
     def cancel(self):
-        if not all(self.mapped("is_cancel_allowed")):
-            raise ValidationError(_("Cancel not allowed for this line"))
+        # if not all(self.mapped("is_cancel_allowed")):
+        #     raise ValidationError(_("Cancel not allowed for this line"))
         for contract in self.mapped("contract_id"):
             lines = self.filtered(lambda l, c=contract: l.contract_id == c)
             msg = _(
