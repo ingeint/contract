@@ -52,4 +52,5 @@
             (4,ref('account.group_account_invoice'))]"
         />
     </record>
+
 </odoo>

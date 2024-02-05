@@ -13,6 +13,7 @@ class ContractAbstractContract(models.AbstractModel):
     _inherit = "contract.recurrency.basic.mixin"
     _name = "contract.abstract.contract"
     _description = "Abstract Recurring Contract"
+    _check_company_auto = True
 
     # These fields will not be synced to the contract
     NO_SYNC = ["name", "partner_id", "company_id"]
@@ -41,7 +42,7 @@ class ContractAbstractContract(models.AbstractModel):
         "res.company",
         string="Company",
         required=True,
-        default=lambda self: self.env.company.id,
+        default=lambda self: self.env.company,
     )
     line_recurrence = fields.Boolean(
         string="Recurrence at line level?",

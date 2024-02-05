@@ -21,6 +21,7 @@ class ContractContract(models.Model):
     _name = "contract.contract"
     _description = "Contract"
     _order = "code, name asc"
+    _check_company_auto = True
     _inherit = [
         "mail.thread",
         "mail.activity.mixin",

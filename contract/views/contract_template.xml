@@ -17,7 +17,7 @@
                         <field
                             name="company_id"
                             options="{'no_create': True}"
-                            groups="base.group_multi_company"
+
                         />
                     </group>
                 </group>
@@ -39,7 +39,7 @@
                                     context="{'default_display_type': 'line_note'}"
                                 />
                             </control>
-                            <field name="display_type" invisible="1" />
+                            <field name="display_type" column_invisible="True" />
                             <field name="sequence" widget="handle" />
                             <field name="product_id" />
                             <field name="name" widget="section_and_note_text" />
@@ -47,18 +47,16 @@
                             <field name="uom_id" />
                             <field
                                 name="automatic_price"
-                                attrs="{'column_invisible': [('parent.contract_type','=','purchase')]}"
-                            />
+                                column_invisible="parent.contract_type == 'purchase'"/>
                             <field
                                 name="price_unit"
-                                attrs="{'readonly': [('automatic_price', '=', True)]}"
-                            />
-                            <field name="specific_price" invisible="1" />
+                                readonly="automatic_price"/>
+                            <field name="specific_price" column_invisible="True" />
                             <field name="discount" groups="base.group_no_one" />
                             <field name="price_subtotal" />
-                            <field name="recurring_rule_type" invisible="1" />
-                            <field name="recurring_interval" invisible="1" />
-                            <field name="recurring_invoicing_type" invisible="1" />
+                            <field name="recurring_rule_type" column_invisible="True" />
+                            <field name="recurring_interval" column_invisible="True" />
+                            <field name="recurring_invoicing_type" column_invisible="True" />
                         </tree>
                     </field>
                 </group>
