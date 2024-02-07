@@ -361,7 +361,7 @@ class ContractContract(models.Model):
         self.pricelist_id = partner.property_product_pricelist.id
         self.fiscal_position_id = partner.env[
             "account.fiscal.position"
-        ]._get_fiscal_position(partner.id)
+        ]._get_fiscal_position(partner)
         if self.contract_type == "purchase":
             self.payment_term_id = partner.property_supplier_payment_term_id
         else:
