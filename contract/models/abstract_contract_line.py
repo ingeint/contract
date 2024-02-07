@@ -206,7 +206,7 @@ class ContractAbstractContractLine(models.AbstractModel):
                         "old_date", fields.Date.context_today(line)
                     ),
                 )
-                line.price_unit = product.price
+                line.price_unit = product.list_price
             else:
                 line.price_unit = line.specific_price
 
@@ -254,5 +254,5 @@ class ContractAbstractContractLine(models.AbstractModel):
             uom=self.uom_id.id,
         )
         vals["name"] = self.product_id.get_product_multiline_description_sale()
-        vals["price_unit"] = product.price
+        vals["price_unit"] = product.list_price
         self.update(vals)
