@@ -146,7 +146,6 @@ class ContractContract(models.Model):
     @api.model_create_multi
     def create(self, vals_list):
         records = super().create(vals_list)
-        records._set_start_contract_modification()
         return records
 
     def write(self, vals):
@@ -161,22 +160,26 @@ class ContractContract(models.Model):
 
     @api.model
     def _set_start_contract_modification(self):
-        subtype_id = self.env.ref("contract.mail_message_subtype_contract_modification")
-        for record in self:
-            if record.contract_line_ids:
-                date_start = min(record.contract_line_ids.mapped("date_start"))
-            else:
-                date_start = record.create_date
-            record.message_subscribe(
-                partner_ids=[record.partner_id.id], subtype_ids=[subtype_id.id]
-            )
-            record.with_context(skip_modification_mail=True).write(
-                {
-                    "modification_ids": [
-                        (0, 0, {"date": date_start, "description": _("Contract start")})
-                    ]
-                }
-            )
+        pass
+        # subtype_id = self.env.ref("contract.mail_message_subtype_contract_modification")
+        # for record in self:
+        #     if record.contract_line_ids:  
+        #         date_start = min(record.contract_line_ids.mapped("date_start"))
+        #     else:
+        #         date_start = record.create_date
+                
+                
+        #     record.message_subscribe(
+        #         partner_ids=[record.partner_id.id], subtype_ids=[subtype_id.id]
+        #     )
+           
+        #     record.with_context(skip_modification_mail=True).write(
+        #         {
+        #             "modification_ids": [
+        #                 (0, 0, {"date": date_start, "description": _("Contract start")})
+        #             ]
+        #         }
+        #     )
 
     @api.model
     def _modification_mail_send(self):
@@ -185,15 +188,15 @@ class ContractContract(models.Model):
                 lambda x: not x.sent
             )
             if modification_ids_not_sent:
-                if not self.env.context.get("skip_modification_mail"):
-                    record.with_context(
-                        default_subtype_id=self.env.ref(
-                            "contract.mail_message_subtype_contract_modification"
-                        ).id,
-                    ).message_post_with_template(
-                        self.env.ref("contract.mail_template_contract_modification").id,
-                        email_layout_xmlid="contract.template_contract_modification",
-                    )
+                # if not self.env.context.get("skip_modification_mail"):
+                #     record.with_context(
+                #         default_subtype_id=self.env.ref(
+                #             "contract.mail_message_subtype_contract_modification"
+                #         ).id,
+                #     ).message_post_with_template(
+                #         self.env.ref("contract.mail_template_contract_modification").id,
+                #         email_layout_xmlid="contract.template_contract_modification",
+                #     )
                 modification_ids_not_sent.write({"sent": True})
 
     def _compute_access_url(self):
@@ -581,7 +584,7 @@ class ContractContract(models.Model):
     def _recurring_create_invoice(self, date_ref=False):
         invoices_values = self._prepare_recurring_invoices_values(date_ref)
         moves = self.env["account.move"].create(invoices_values)
-        self._invoice_followers(moves)
+        # self._invoice_followers(moves)
         # self._compute_recurring_next_date()
         return moves
 
