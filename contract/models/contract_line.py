@@ -553,7 +553,7 @@ class ContractLine(models.Model):
                 "sequence": self.sequence,
                 "name": name,
                 "analytic_account_id": self.analytic_account_id.id,
-                "analytic_tag_ids": [(6, 0, self.analytic_tag_ids.ids)],
+                #"analytic_tag_ids": [(6, 0, self.analytic_tag_ids.ids)],
                 "price_unit": self.price_unit,
             }
         )
