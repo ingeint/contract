@@ -35,6 +35,26 @@
                         string="Send by Email"
                         invisible="is_terminated"
                         groups="base.group_user"/>
+                    <button
+                        name="action_terminate_contract"
+                        type="object"
+                        string="Terminate Contract"
+                        invisible="is_terminated"
+                        groups="contract.can_terminate_contract"/>
+                    <button
+                        name="action_terminate_contract"
+                        type="object"
+                        string="Update Termination Details"
+                        invisible="not is_terminated"
+                        groups="contract.can_terminate_contract"/>
+                    <button
+                        name="action_cancel_contract_termination"
+                        type="object"
+                        confirm="Are you sure you want to re-activate this contract?"
+                        string="Cancel Contract Termination"
+                        invisible="not is_terminated"
+                        groups="contract.can_terminate_contract"/>
+                    <button type="object" string="Preview" name="action_preview" />
                 </header>
                 <sheet string="Contract">
                     <field name="active" invisible="1" />
