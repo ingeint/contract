@@ -167,12 +167,11 @@ class ContractContract(models.Model):
         #         date_start = min(record.contract_line_ids.mapped("date_start"))
         #     else:
         #         date_start = record.create_date
-                
-                
+
         #     record.message_subscribe(
         #         partner_ids=[record.partner_id.id], subtype_ids=[subtype_id.id]
         #     )
-           
+
         #     record.with_context(skip_modification_mail=True).write(
         #         {
         #             "modification_ids": [
@@ -180,6 +179,12 @@ class ContractContract(models.Model):
         #             ]
         #         }
         #     )
+
+    def unlink(self):
+        for record in self:
+            raise ValidationError(
+                _("You cannot delete a contract, please archive it"))
+        return super().unlink()
 
     @api.model
     def _modification_mail_send(self):
@@ -247,10 +252,10 @@ class ContractContract(models.Model):
         if any(self.contract_line_ids.mapped("automatic_price")):
             # Use pricelist currency
             currency = (
-                self.pricelist_id.currency_id
-                or self.partner_id.with_company(
-                    self.company_id
-                ).property_product_pricelist.currency_id
+                    self.pricelist_id.currency_id
+                    or self.partner_id.with_company(
+                self.company_id
+            ).property_product_pricelist.currency_id
             )
         return currency or self.journal_id.currency_id or self.company_id.currency_id
 
@@ -342,14 +347,14 @@ class ContractContract(models.Model):
                 lines = self._convert_contract_lines(contract_template_id)
                 self.contract_line_ids += lines
             elif not any(
-                (
-                    field.compute,
-                    field.related,
-                    field.automatic,
-                    field.readonly,
-                    field.company_dependent,
-                    field.name in self.NO_SYNC,
-                )
+                    (
+                            field.compute,
+                            field.related,
+                            field.automatic,
+                            field.readonly,
+                            field.company_dependent,
+                            field.name in self.NO_SYNC,
+                    )
             ):
                 if self.contract_template_id[field_name]:
                     self[field_name] = self.contract_template_id[field_name]
@@ -380,7 +385,7 @@ class ContractContract(models.Model):
             # Remove template link field
             vals.pop("contract_template_id", False)
             vals["date_start"] = fields.Date.context_today(contract_line)
-            #vals["recurring_next_date"] = fields.Date.context_today(contract_line)
+            # vals["recurring_next_date"] = fields.Date.context_today(contract_line)
             new_lines += contract_line_model.new(vals)
         new_lines._onchange_is_auto_renew()
         return new_lines
@@ -485,9 +490,9 @@ class ContractContract(models.Model):
 
         def can_be_invoiced(contract_line):
             return (
-                not contract_line.is_canceled
-                and contract_line.recurring_next_date
-                and contract_line.recurring_next_date <= date_ref
+                    not contract_line.is_canceled
+                    and contract_line.recurring_next_date
+                    and contract_line.recurring_next_date <= date_ref
             )
 
         lines2invoice = previous = self.env["contract.line"]
@@ -563,7 +568,7 @@ class ContractContract(models.Model):
                     '<a href="#" data-oe-model="%s" data-oe-id="%s">Invoice'
                     "</a>"
                 )
-                % (invoice._name, invoice.id)
+                     % (invoice._name, invoice.id)
             )
         return invoice
 
@@ -621,7 +626,7 @@ class ContractContract(models.Model):
         for company in companies:
             contracts_to_invoice = contracts.filtered(
                 lambda c: c.company_id == company
-                and (not c.date_end or c.recurring_next_date <= c.date_end)
+                          and (not c.date_end or c.recurring_next_date <= c.date_end)
             ).with_company(company)
             _recurring_create_func(contracts_to_invoice, date_ref)
         return True
@@ -643,7 +648,7 @@ class ContractContract(models.Model):
         }
 
     def _terminate_contract(
-        self, terminate_reason_id, terminate_comment, terminate_date
+            self, terminate_reason_id, terminate_comment, terminate_date
     ):
         self.ensure_one()
         if not self.env.user.has_group("contract.can_terminate_contract"):
