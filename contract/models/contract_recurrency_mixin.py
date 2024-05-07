@@ -95,15 +95,16 @@ class ContractRecurrencyMixin(models.AbstractModel):
 
     @api.depends("next_period_date_start")
     def _compute_recurring_next_date(self):
-        for rec in self:
-            rec.recurring_next_date = self.get_next_invoice_date(
-                rec.next_period_date_start,
-                rec.recurring_invoicing_type,
-                rec.recurring_invoicing_offset,
-                rec.recurring_rule_type,
-                rec.recurring_interval,
-                max_date_end=rec.date_end,
-            )
+        pass
+        # for rec in self:
+        #     rec.recurring_next_date = self.get_next_invoice_date(
+        #         rec.next_period_date_start,
+        #         rec.recurring_invoicing_type,
+        #         rec.recurring_invoicing_offset,
+        #         rec.recurring_rule_type,
+        #         rec.recurring_interval,
+        #         max_date_end=rec.date_end,
+        #     )
 
     @api.depends("last_date_invoiced", "date_start", "date_end")
     def _compute_next_period_date_start(self):
