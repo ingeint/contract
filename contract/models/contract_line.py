@@ -33,14 +33,7 @@ class ContractLine(models.Model):
         auto_join=True,
         ondelete="cascade",
     )
-    analytic_account_id = fields.Many2one(
-        string="Analytic account",
-        comodel_name="account.analytic.account",
-    )
-    analytic_tag_ids = fields.Many2many(
-        comodel_name="account.analytic.tag",
-        string="Analytic Tags",
-    )
+
     date_start = fields.Date(required=True)
     date_end = fields.Date(compute="_compute_date_end", store=True, readonly=False)
     termination_notice_date = fields.Date(
@@ -555,8 +548,6 @@ class ContractLine(models.Model):
                 "contract_line_id": self.id,
                 "sequence": self.sequence,
                 "name": name,
-                "analytic_account_id": self.analytic_account_id.id,
-                "analytic_tag_ids": [(6, 0, self.analytic_tag_ids.ids)],
                 "price_unit": self.price_unit,
             }
         )

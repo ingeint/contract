@@ -187,15 +187,6 @@
                                     <field name="sequence" widget="handle" />
                                     <field name="product_id" />
                                     <field name="name" widget="section_and_note_text" />
-                                    <field
-                                        name="analytic_account_id"
-                                        groups="analytic.group_analytic_accounting"
-                                    />
-                                    <field
-                                        name="analytic_tag_ids"
-                                        widget="many2many_tags"
-                                        groups="analytic.group_analytic_tags"
-                                    />
                                     <field name="quantity" />
                                     <field name="allowed_uom_categ_id" column_invisible="True" />
                                     <field name="uom_id" />
@@ -282,15 +273,6 @@
                                     <field name="sequence" widget="handle" />
                                     <field name="product_id" />
                                     <field name="name" widget="section_and_note_text" />
-                                    <field
-                                        name="analytic_account_id"
-                                        groups="analytic.group_analytic_accounting"
-                                    />
-                                    <field
-                                        name="analytic_tag_ids"
-                                        widget="many2many_tags"
-                                        groups="analytic.group_analytic_tags"
-                                    />
                                     <field name="quantity" />
                                     <field name="uom_id" />
                                     <field
@@ -386,9 +368,6 @@
                             <group>
                                 <field
                                     name="code"
-                                    readonly="is_terminated"/>
-                                <field
-                                    name="group_id"
                                     readonly="is_terminated"/>
                                 <field
                                     name="company_id"

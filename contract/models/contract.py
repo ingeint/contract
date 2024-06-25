@@ -36,11 +36,7 @@ class ContractContract(models.Model):
     code = fields.Char(
         string="Reference",
     )
-    group_id = fields.Many2one(
-        string="Group",
-        comodel_name="account.analytic.account",
-        ondelete="restrict",
-    )
+
     currency_id = fields.Many2one(
         compute="_compute_currency_id",
         inverse="_inverse_currency_id",
