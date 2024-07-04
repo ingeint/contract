@@ -35,6 +35,7 @@
         </xpath>
         <div id="portal_client_category" position="inside">
             <t t-call="portal.portal_docs_entry" t-if="contract_count">
+                <t t-set="icon"  style="width:64px; height:64px;" t-value="'/contract/static/src/img/contract_icon.png'"/>
                 <t t-set="title">Contracts</t>
                 <t t-set="url" t-value="'/my/contracts'" />
                 <t t-set="count" t-value="contract_count" />
