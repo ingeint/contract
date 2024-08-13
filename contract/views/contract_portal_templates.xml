@@ -54,8 +54,8 @@
                     <tr class="active">
                         <th>Contract #</th>
                         <th class='d-none d-md-table-cell'>Date</th>
-                        <th class='d-none d-md-table-cell'>Date end</th>
-                        <th class='text-right'>Reference</th>
+                        <th class='d-none d-md-table-cell'>Dirección</th>
+                        <th class='text-right'>Plan</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -73,11 +73,17 @@
                             <td class="d-none d-md-table-cell">
                                 <span t-field="contract.recurring_next_date" />
                             </td>
-                            <td class="d-none d-md-table-cell">
+                            <td class="d-none d-md-table-cell" style="text-align: justify; white-space: normal;">
                                 <span t-field="contract.date_end" />
+                                <t t-if="contract.physical_address">
+                                    <span t-field="contract.physical_address" />
+                                </t>
+                                <t t-else="">
+                                    <span t-field="contract.partner_id.contact_address" />
+                                </t>
                             </td>
-                            <td class='text-right'>
-                                <span t-field="contract.code" />
+                            <td class='text-right' style="text-align: justify; white-space: normal;">
+                                <span t-field="contract.contract_template_id" />
                             </td>
                         </tr>
                     </t>
