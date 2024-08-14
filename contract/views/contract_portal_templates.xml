@@ -74,7 +74,6 @@
                                 <span t-field="contract.recurring_next_date" />
                             </td>
                             <td class="d-none d-md-table-cell" style="text-align: justify; white-space: normal;">
-                                <span t-field="contract.date_end" />
                                 <t t-if="contract.physical_address">
                                     <span t-field="contract.physical_address" />
                                 </t>
@@ -174,10 +173,15 @@
                             <div class="col-12 col-md-6 mb-4 mb-md-0">
                                 <div t-if="contract.code" class="row mb-2 mb-sm-1">
                                     <div class="col-12 col-sm-4">
-                                        <strong>Reference</strong>
+                                        <strong>Dirección</strong>
                                     </div>
                                     <div class="col-12 col-sm-8">
-                                        <span t-field="contract.code" />
+                                        <t t-if="contract.physical_address">
+                                            <span t-field="contract.physical_address" />
+                                        </t>
+                                        <t t-else="">
+                                            <span t-field="contract.partner_id.contact_address" />
+                                        </t>
                                     </div>
                                 </div>
                                 <div
@@ -196,13 +200,10 @@
                                 </div>
                                 <div t-if="contract.date_end" class="row mb-2 mb-sm-1">
                                     <div class="col-12 col-sm-4">
-                                        <strong>Date end</strong>
+                                        <strong>Plan</strong>
                                     </div>
                                     <div class="col-12 col-sm-8">
-                                        <span
-                                            t-field="contract.date_end"
-                                            t-options='{"widget": "date"}'
-                                        />
+                                        <span t-field="contract.contract_template_id" />
                                     </div>
                                 </div>
                             </div>
