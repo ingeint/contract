@@ -244,7 +244,7 @@
                                 </thead>
                                 <tbody class="contract_tbody">
                                     <t
-                                        t-foreach="contract.contract_line_ids"
+                                        t-foreach="contract.contract_line_ids.filtered(lambda x: not x.is_canceled)"
                                         t-as="line"
                                     >
                                         <tr
