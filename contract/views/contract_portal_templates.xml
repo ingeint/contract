@@ -53,7 +53,7 @@
                 <thead>
                     <tr class="active">
                         <th>Contract #</th>
-                        <th class='d-none d-md-table-cell'>Date</th>
+                        <th class='d-none d-md-table-cell'>Fecha de Solvencia</th>
                         <th class='d-none d-md-table-cell'>Dirección</th>
                         <th class='text-right'>Plan</th>
                     </tr>
@@ -189,7 +189,7 @@
                                     class="row mb-2 mb-sm-1"
                                 >
                                     <div class="col-12 col-sm-4">
-                                        <strong>Date of Next Invoice</strong>
+                                        <strong>Fecha de Solvencia</strong>
                                     </div>
                                     <div class="col-12 col-sm-8">
                                         <span
@@ -236,10 +236,6 @@
                                             name="th_recurring_interval"
                                             class="text-right"
                                         >Recurrence</th>
-                                        <th
-                                            name="th_recurring_next_date"
-                                            class="text-right"
-                                        >Date of next invoice</th>
                                     </tr>
                                 </thead>
                                 <tbody class="contract_tbody">
@@ -293,14 +289,6 @@
                                                     />
                                                     <span
                                                         t-field="line.recurring_rule_type"
-                                                    />
-                                                </td>
-                                                <td
-                                                    name="td_recurring_next_date"
-                                                    class="text-right"
-                                                >
-                                                    <span
-                                                        t-field="line.recurring_next_date"
                                                     />
                                                 </td>
                                             </t>
