@@ -77,9 +77,7 @@ class ContractRecurrencyMixin(models.AbstractModel):
     _description = "Recurrency mixin for contract models"
 
     date_start = fields.Date(default=lambda self: fields.Date.context_today(self))
-    recurring_next_date = fields.Date(
-        compute="_compute_recurring_next_date", store=True, readonly=False, copy=True
-    )
+    recurring_next_date = fields.Date(readonly=False, copy=True)
     date_end = fields.Date(string="Date End", index=True)
     next_period_date_start = fields.Date(
         string="Next Period Start",
