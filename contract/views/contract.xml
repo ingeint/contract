@@ -128,30 +128,24 @@
                         </group>
                     </group>
                     <group name="recurring_invoices">
-                        <field name="line_recurrence" class="oe_inline" />
-                        <label for="line_recurrence" />
-                        <group invisible="line_recurrence">
+                        <group>
                             <label for="recurring_interval" />
                             <div class="o_row">
                                 <field
                                     name="recurring_interval"
-                                    required="not line_recurrence"
                                     class="oe_inline"
                                     nolabel="1"/>
                                 <field
                                     name="recurring_rule_type"
-                                    required="not line_recurrence"
                                     class="oe_inline"
                                     nolabel="1"/>
                             </div>
                             <field
-                                name="recurring_invoicing_type"
-                                required="not line_recurrence"/>
+                                name="recurring_invoicing_type"/>
                         </group>
-                        <group invisible="line_recurrence">
+                        <group>
                             <field
-                                name="date_start"
-                                required="not line_recurrence"/>
+                                name="date_start"/>
                             <field name="date_end" />
                             <field name="recurring_next_date" />
                         </group>
@@ -163,7 +157,6 @@
                         <page name="recurring_invoice_line" string="Recurring Invoices">
                             <field
                                 name="contract_line_fixed_ids"
-                                invisible="line_recurrence"
                                 readonly="is_terminated"
                                 widget="section_and_note_one2many"
                                 context="{'default_contract_type': contract_type, 'default_recurring_rule_type': recurring_rule_type, 'default_recurring_invoicing_type': recurring_invoicing_type, 'default_recurring_interval': recurring_interval, 'default_date_start': date_start, 'default_recurring_next_date': recurring_next_date}">
@@ -250,7 +243,6 @@
                             </field>
                             <field
                                 name="contract_line_ids"
-                                invisible="not line_recurrence"
                                 readonly="is_terminated"
                                 widget="section_and_note_one2many"
                                 context="{'default_contract_type': contract_type}">
