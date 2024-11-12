@@ -128,8 +128,8 @@
                         </group>
                     </group>
                     <group name="recurring_invoices">
-                        <field name="line_recurrence" class="oe_inline" />
-                        <label for="line_recurrence" />
+                        <field name="line_recurrence" invisible="True"/>
+
                         <group invisible="line_recurrence">
                             <label for="recurring_interval" />
                             <div class="o_row">
