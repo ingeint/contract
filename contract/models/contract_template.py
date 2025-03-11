@@ -20,3 +20,4 @@ class ContractTemplate(models.Model):
         copy=True,
         string="Contract template lines",
     )
+    active = fields.Boolean(default=True)

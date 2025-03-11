@@ -8,8 +8,12 @@
             <form string="Contract Template">
 
                 <sheet>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger" invisible="active == True"/>
                     <group name="name">
                         <field name="name"/>
+                        <field name="active" 
+                        invisible="1"
+                        />
                     </group>
                     <group name="group_main">
                         <group name="group_main_left">
@@ -68,6 +72,9 @@
                 <field name="name" />
                 <field name="contract_type" />
                 <field name="pricelist_id" />
+                <field name="active" 
+                invisible="1"
+                />
             </tree>
         </field>
     </record>
@@ -96,6 +103,8 @@
                     string="Journal"
                     context="{'group_by': 'journal_id'}"
                 />
+                <separator/>
+                <filter name="archived" string="Archived" domain="[('active', '=', False)]" />
             </search>
         </field>
     </record>
