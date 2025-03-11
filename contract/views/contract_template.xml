@@ -19,7 +19,9 @@
                         <group name="group_main_left">
                             <field name="contract_type"/>
                             <field name="journal_id"/>
-                            <field name="pricelist_id"/>
+                            <field name="pricelist_id" 
+                            domain="[('active', '=', True)]"
+                            />
                             <field name="company_id" options="{'no_create': True}"/>
                         </group>
                     </group>
