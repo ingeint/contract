@@ -102,7 +102,9 @@
                                 readonly="is_terminated"/>
                             <field
                                 name="pricelist_id"
-                                readonly="is_terminated"/>
+                                readonly="is_terminated"
+                                domain="[('active', '=', True)]"
+                                />
                             <field
                                 name="payment_term_id"
                                 readonly="is_terminated"/>
