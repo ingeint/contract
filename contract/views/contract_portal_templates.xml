@@ -56,19 +56,28 @@
                         <th class='d-none d-md-table-cell'>Fecha de Solvencia</th>
                         <th class='d-none d-md-table-cell'>Dirección</th>
                         <th class='text-right'>Plan</th>
+                        <th class="text-center">Observaciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     <t t-foreach="contracts" t-as="contract">
                         <tr>
                             <td>
-                                <a
+                                <t t-if="contract.get_can_make_payment()">
+                                    <a
                                     t-att-href="contract.get_portal_url()"
                                     t-attf-class="tr_contract_link"
                                     t-att-title="contract.name"
-                                >
-                                    <t t-esc="contract.name" />
-                                </a>
+                                    >
+                                        <t t-esc="contract.name" />
+                                    </a>
+                                </t>
+                                <t t-else="">
+                                    <p t-att-title="contract.name">
+                                        <t t-esc="contract.name" />
+                                    </p>
+                                </t>
+                               
                             </td>
                             <td class="d-none d-md-table-cell">
                                 <span t-field="contract.recurring_next_date" />
@@ -83,6 +92,11 @@
                             </td>
                             <td class='text-right' style="text-align: justify; white-space: normal;">
                                 <span t-field="contract.contract_template_id" />
+                            </td>
+                            <td class='text-right' style="text-align: center; white-space: normal;">
+                                <t t-if="not contract.get_can_make_payment()">
+                                    <span>NO POSEE DEUDA SOLVENTE AL <t t-esc="contract.recurring_next_date"/></span>
+                                </t>
                             </td>
                         </tr>
                     </t>
