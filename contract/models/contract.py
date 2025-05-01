@@ -136,7 +136,7 @@ class ContractContract(models.Model):
     def get_can_make_payment(self):
         for rec in self:
             today = fields.Date.context_today(rec)
-            if rec.recurring_next_date.month > today.month:
+            if rec.recurring_next_date > today:
                 return False
         return True
 
