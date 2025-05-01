@@ -137,8 +137,8 @@ class ContractContract(models.Model):
         for rec in self:
             today = fields.Date.context_today(rec)
             if rec.recurring_next_date.month > today.month:
-                return True
-        return False
+                return False
+        return True
 
     def get_formview_id(self, access_uid=None):
         if self.contract_type == "sale":
