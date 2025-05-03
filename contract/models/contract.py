@@ -133,13 +133,6 @@ class ContractContract(models.Model):
         string="Modifications",
     )
 
-    def get_can_make_payment(self):
-        for rec in self:
-            today = fields.Date.context_today(rec)
-            if rec.recurring_next_date > today:
-                return False
-        return True
-
     def get_formview_id(self, access_uid=None):
         if self.contract_type == "sale":
             return self.env.ref("contract.contract_contract_customer_form_view").id
